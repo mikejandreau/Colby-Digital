@@ -38,18 +38,6 @@ get_header();
         </div>
       </section>
 
-      <section class="intro-copy">
-        <div class="container">
-          <div class="content-dark-bg intro-copy-block">
-            <?php if ( have_posts() ) : while ( have_posts() ) : the_post();
-                the_content();
-            endwhile; else: ?>
-                <p>Sorry, no posts matched your criteria.</p>
-            <?php endif; ?>
-          </div>
-        </div>
-      </section>
-
       <section class="triple-feature">
         <div class="container">
           <div class="col-md-12">
@@ -64,6 +52,18 @@ get_header();
                 <a href="#" class="triple-feature-link">Unique Collections</a>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="intro-copy">
+        <div class="container">
+          <div class="content-dark-bg intro-copy-block">
+            <?php if ( have_posts() ) : while ( have_posts() ) : the_post();
+                the_content();
+            endwhile; else: ?>
+                <p>Sorry, no posts matched your criteria.</p>
+            <?php endif; ?>
           </div>
         </div>
       </section>
@@ -114,66 +114,6 @@ get_header();
 
 
 
-
-
-
-
-
-
-
-
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 mb-4 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="/img/colby-colbiana.jpg" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Colbiana</a>
-                </h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6 mb-4 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="/img/colby-map.jpg" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Atlas of Maine</a>
-                </h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit aliquam aperiam nulla perferendis dolor nobis numquam, rem expedita, aliquid optio, alias illum eaque. Non magni, voluptates quae, necessitatibus unde temporibus.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6 mb-4 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="/img/colby-rubaiyat.jpg" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Rubaiyat</a>
-                </h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6 mb-4 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="/img/colby-music.jpg" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Sounds of Colby</a>
-                </h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit aliquam aperiam nulla perferendis dolor nobis numquam, rem expedita, aliquid optio, alias illum eaque. Non magni, voluptates quae, necessitatibus unde temporibus.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-
     <section class="section blog-section">
         <div class="container">
 
@@ -200,14 +140,15 @@ get_header();
                         ?>
 
                         <?php while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
-                        <div class="col-sm-6 box<?php echo $counter--; ?>">
-                            <div class="blog-feature">
+                        <div class="col-lg-6 mb-4 wow fadeIn box<?php echo $counter--; ?>" data-wow-duration="1s" data-wow-delay="0.4s">
+                            <div class="card h-100">
                                 <div class="blog-image">
                                     <?php $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'large' ); ?>
                                     <a href="<?php echo get_permalink( get_the_ID() );?>" style="background-image: url('<?php echo $thumb['0'];?>')"></a>
                                 </div>
-                                <div class="blog-text">
-                                    <h3><a href="<?php echo get_permalink( get_the_ID() );?>"><?php echo get_the_title(); ?></a></h3>
+                                <div class="card-body">
+                                    <h4 class="card-title"><a href="<?php echo get_permalink( get_the_ID() );?>"><?php echo get_the_title(); ?></a></h4>
+                                    <?php /*
                                     <div class="blog-author-date">
                                         <p class="author">
                                             
@@ -232,8 +173,11 @@ get_header();
                                         ?>
                                         </p>
                                     </div>
+                                    */ ?>
                                     <?php the_excerpt(); ?>
+                                    <?php /*
                                     <a class="btn btn-primary" href="<?php echo get_permalink( get_the_ID() );?>">Read More</a>
+                                    */ ?>
                                 </div>
                             </div>
                         </div>

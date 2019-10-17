@@ -50,15 +50,31 @@
 					'walker'            => new wp_bootstrap_navwalker()
 					)); 
 				?>
-				<form class="form-inline my-2 my-md-0">
+
+				<!-- <form class="form-inline my-2 my-md-0">
 					<div class="input-group navbar-search">
 						<input type="text" class="form-control" placeholder="Search collections" aria-label="Recipient's username" aria-describedby="basic-addon2">
 						<div class="input-group-append">
 							<button class="btn btn-light" type="button"><i class="fa fa-search"></i></button>
 						</div>
 					</div>
-				</form>
+				</form> -->
+
+
+    <form class="form-inline search-form" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+    	<div class="input-group navbar-search">
+    		<input class="form-control border-white" type="text" aria-label="Search collections" placeholder="<?php echo esc_attr_x( 'Search collections', 'search', 'digitalcolby' ) ?>" value="<?php echo get_search_query() ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'search', 'digitalcolby' ) ?>">
+    		<div class="input-group-append"><button class="btn btn-light bg-white border-0" type="submit"><i class="fa fa-search"></i></button></div>
+    	</div>
+    </form>
+
+    <?php // get_search_form(); ?> 
+
+
+
+
 				<a href="#" class="btn btn-light order-1 order-md-last">Browse All</a>
+
 			</div>
 			<!-- </div> -->
 		</nav>

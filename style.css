@@ -976,7 +976,6 @@ p a {
 
 .blog-image a {
   display: block;
-  border: 1px solid red;
   height: 300px;
   background-position: center center;
   background-size: cover;
