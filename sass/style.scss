@@ -305,8 +305,26 @@ p a {
 
 .intro-copy-block {
   padding: 60px;
+
+  p:first-of-type {
+  	font-size: 1.25rem;
+    font-weight: 300;
+  }
+
+  p:last-of-type {
+  	margin: 0;
+  }
 }
 
+
+.blog-image a {
+	display: block;
+	border: 1px solid red;
+	height: 300px;
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
 
 
 
