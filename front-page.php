@@ -131,7 +131,7 @@ get_header();
                                 
 
                         <?php
-                            $counter = 6; // Number of posts to pull
+                            $counter = 4; // Number of posts to pull
                             $recentPosts = new WP_Query(array(
                                 'showposts' => $counter, 
                                 'offset' => 0,  // Set this to 1 to skip over first post, 2 to skip the first two, etc.
