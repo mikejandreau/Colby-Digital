@@ -204,3 +204,27 @@ if ( class_exists( 'WooCommerce' ) ) {
 require get_template_directory() . '/inc/wp_bootstrap_navwalker.php';
 
 
+
+
+/**
+ * ADD FEATURED IMAGE TO HERO
+ * Enable featured image to be background of hero block (default hero image in hero.scss)
+ * If featured image has been set, this function gets ID/URL of image and overrides default CSS 
+ */
+function digitalcolby_custom_background_image(){
+	if (has_post_thumbnail()) { // if a thumbnail has been set
+		$imgID = get_post_thumbnail_id($post->ID); // get id of featured image
+		$featuredImage = wp_get_attachment_image_src($imgID, 'full' ); // get url of featured image (returns array)
+		$imgURL = $featuredImage[0]; // get url of image from array
+		?>
+		<style type="text/css">
+			.site-wrap {
+				background: url(<?php echo $imgURL ?>);
+			}
+		</style>
+		<?php
+	}
+}
+add_action( 'wp_head', 'digitalcolby_custom_background_image' );
+
+

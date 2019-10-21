@@ -1,13 +1,13 @@
 <?php
 /**
- * The template for displaying all pages
+ * Template Name: Unique Collections 
  *
  * This is the template that displays all pages by default.
  * Please note that this is the WordPress construct of pages
  * and that other 'pages' on your WordPress site may use a
  * different template.
  *
- * @link https://codex.wordpress.org/Template_Hierarchy
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package Digital_Colby_V1
  */
@@ -15,108 +15,18 @@
 get_header();
 ?>
 
-<?php if ( is_home() && is_front_page() ) : // If front page is set to show latest posts, get this markup ?>
-    <?php 
-        while ( have_posts() ) : the_post();
-        get_template_part( 'template-parts/content', 'page' );
-            /* // If comments are open or we have at least one comment, load up the comment template.
-            if ( comments_open() || get_comments_number() ) :
-            comments_template();
-            endif; */
-        endwhile; // End of the loop.
-        // the_posts_navigation(); // If front page is set to show latest posts, get the default post navigation
-        new_england_vascular_access_numeric_posts_nav(); // Numbered pagination links
-    ?>
-
-<?php else : // If front page is set to show a static page, show this markup before content area ?>
-    <?php /*
-    */ ?>
-
-
+<div id="primary" class="content-area">
+	<main id="main" class="site-main">
 
       <section class="title-block wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
-        <div class="container">
-          <h1><?php echo get_the_title(); ?></h1>
-        </div>
-      </section>
-
-      <section class="triple-feature wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s">
-        <div class="container">
-          <div class="col-md-12">
-            <div class="row">
-              <div class="col-sm-4 triple-feature-block bg-image">
-                <a href="/college-archives/" class="triple-feature-link">College Archives</a>
-              </div>
-              <div class="col-sm-4 triple-feature-block bg-image">
-                <a href="/scholarship/" class="triple-feature-link">Scholarship</a>
-              </div>
-              <div class="col-sm-4 triple-feature-block bg-image">
-                <a href="/unique-collections/" class="triple-feature-link">Unique Collections</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="intro-copy wow fadeIn" data-wow-duration="1s" data-wow-delay="0.6s">
-        <div class="container">
-          <div class="content-dark-bg intro-copy-block">
-            <?php if ( have_posts() ) : while ( have_posts() ) : the_post();
-                the_content();
-            endwhile; else: ?>
-                <p>Sorry, no posts matched your criteria.</p>
-            <?php endif; ?>
-          </div>
-        </div>
-      </section>
+			<div class="container">
+				<h1><?php echo get_the_title(); ?></h1>
+			</div>
+		</section>
 
 
 
-
-
-
-
-
-
-    <div class="about-block">
-        <div class="container">
-
-
-
-
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-
-                </div>
-                <!-- <div class="col-sm-4">
-                    <?php // get_sidebar( new_england_vascular_access_template_base() ); ?>
-                </div> -->
-            </div>
-
-
-
-
-<?php /*
-            <div class="row">
-                <div class="col-sm-12">
-                    <p class="text-center"><a class="btn btn-primary btn-lg" href="<?php echo get_site_url(); ?>/archives/">View Archives</a></p>
-                </div>
-            </div>
-*/ ?>
-
-        </div>
-    </div>
-
-<?php endif; ?>
-
-
-<?php if ( !is_home() && is_front_page() ) : // If front page is set to show a static page, show this markup after content area ?>
-
-
-
-
-
-    <section class="section blog-section">
+      <section class="section featured-items wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s">
         <div class="container">
 
 
@@ -131,7 +41,7 @@ get_header();
                                 
 
                         <?php
-                            $counter = 6; // Number of posts to pull
+                            $counter = 4; // Number of posts to pull
                             $recentPosts = new WP_Query(array(
                                 'showposts' => $counter, 
                                 'offset' => 0,  // Set this to 1 to skip over first post, 2 to skip the first two, etc.
@@ -142,7 +52,7 @@ get_header();
                         ?>
 
                         <?php while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
-                        <div class="col-lg-6 mb-4 wow fadeIn box<?php echo $counter--; ?>" data-wow-duration="1s" data-wow-delay="0.4s">
+                        <div class="col-sm-6 col-md-3 mb-4 wow fadeIn box<?php echo $counter--; ?>" data-wow-duration="1s" data-wow-delay="0.4s">
                             <div class="card h-100">
                                 <div class="blog-image">
                                     <?php $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'large' ); ?>
@@ -176,7 +86,7 @@ get_header();
                                         </p>
                                     </div>
                                     */ ?>
-                                    <?php the_excerpt(); ?>
+                                    <?php // the_excerpt(); ?>
                                     <?php /*
                                     <a class="btn btn-primary" href="<?php echo get_permalink( get_the_ID() );?>">Read More</a>
                                     */ ?>
@@ -186,9 +96,12 @@ get_header();
                         <?php endwhile; wp_reset_postdata(); ?>
 
 
+
+            			<?php /*
                         <div class="col-sm-12 line-link-more">
                         <?php echo '<hr><a class="button button-primary" href="' . get_permalink( get_option( 'page_for_posts' ) ) . '">See more posts <i class="fa fa-fw fa-angle-double-right"></i></a>'; ?>
                         </div>
+            			*/ ?>
 
 
                     </div>
@@ -199,22 +112,80 @@ get_header();
 
 
 
-
-
-
-
-
-
         </div>
     </section>
 
 
 
 
-<?php endif; ?>
+
+      <div class="main wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s">
+        <div class="container">
+          <div class="card">
+            <div class="card-body p-5">
+
+
+
+
+
+
+
+
+
+
+
+
+              <div class="row">
+                <div class="col-lg-8">
+
+
+            	<h2 class="mb-4">Collections</h2>
+
+				<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
+					the_content();
+				endwhile; else: ?>
+					<p>Sorry, no posts matched your criteria.</p>
+				<?php endif; ?>
+
+
+
+
+
+	                <?php
+	                    $counter = 6; // Number of posts to pull
+	                    $recentPosts = new WP_Query(array(
+	                        'showposts' => $counter, 
+	                        'offset' => 0,  // Set this to 1 to skip over first post, 2 to skip the first two, etc.
+	                        'order' => 'DESC', // Puts new posts first, to put oldest posts first, change to 'ASC'
+	                        'post__not_in' => get_option("sticky_posts"), // Ignore sticky posts for this particular query
+	                    ));
+	                ?>
+
+	                <?php while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
+	                <div class="collection-block box<?php echo $counter--; ?>" data-wow-duration="1s" data-wow-delay="0.4s">
+	                    <h4><a href="<?php echo get_permalink( get_the_ID() );?>"><?php echo get_the_title(); ?></a><?php if( in_category( 'locked' ) ): ?> &nbsp;<span class="text-danger"><i class="fa fa-lock"></i></span><?php endif; ?></h4>
+	                    <?php the_excerpt(); ?>
+	                </div>
+	                <?php endwhile; wp_reset_postdata(); ?>
+
+                </div>
+				<div class="col-lg-4">
+					<?php get_sidebar(); ?>
+				</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+	</main><!-- #main -->
+</div><!-- #primary -->
 
 
 <?php
-// get_sidebar();
 get_footer();
-

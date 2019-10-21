@@ -10,19 +10,36 @@
 get_header();
 ?>
 
-	<section id="primary" class="content-area">
-		<main id="main" class="site-main">
+
+
+<div id="primary" class="content-area">
+	<main id="main" class="site-main">
+
+      <section class="title-block wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+			<div class="container">
+				<h1>Archives</h1>
+			</div>
+		</section>
+
+		<section class="pt-0 main wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s">
+			<div class="container">
+				<div class="card">
+					<div class="card-body p-5">
+						<div class="row">
+
+							<div class="col-lg-8">
+
+
+
 
 		<?php if ( have_posts() ) : ?>
 
-			<header class="page-header">
-				<h1 class="page-title">
+				<h2 class="mb-4">
 					<?php
 					/* translators: %s: search query. */
 					printf( esc_html__( 'Search Results for: %s', 'digitalcolby' ), '<span>' . get_search_query() . '</span>' );
 					?>
-				</h1>
-			</header><!-- .page-header -->
+				</h2>
 
 			<?php
 			/* Start the Loop */
@@ -47,9 +64,26 @@ get_header();
 		endif;
 		?>
 
-		</main><!-- #main -->
-	</section><!-- #primary -->
+
+
+
+
+							</div>
+							
+							<div class="col-lg-4">
+								<?php get_sidebar(); ?>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</main><!-- #main -->
+</div><!-- #primary -->
+
+
 
 <?php
-get_sidebar();
 get_footer();

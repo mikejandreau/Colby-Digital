@@ -20,7 +20,7 @@
 	<?php wp_head(); ?>
 </head>
 
-<body id="page-top" <?php body_class('site-wrap bg1');?>>
+<body id="page-top" <?php body_class('site-wrap');?>>
 <div class="page-overlay">
 
 <div id="page" class="site">
@@ -29,7 +29,7 @@
 	<header id="masthead" class="site-header">
 		<nav class="navbar navbar-dark navbar-expand-lg justify-content-center" id="mainNav">
 			<!-- <div class="container"> -->
-			<a class="colbylibraries-logo mr-auto" href="<?php echo esc_url( home_url( '/' ) ); ?>" target="_blank"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/colby-libraries-logo-white.png" alt="<?php bloginfo( 'name' ); ?>"></a>
+			<a class="colbylibraries-logo mr-auto" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/colby-libraries-logo-white.png" alt="<?php bloginfo( 'name' ); ?>"></a>
 
 			<button class="navbar-toggler ml-1" type="button" data-toggle="collapse" data-target="#collapsingNavbar2">
 				<span class="navbar-toggler-icon"></span>

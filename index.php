@@ -15,10 +15,47 @@
 get_header();
 ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
 
-		<?php
+
+<div id="primary" class="content-area">
+	<main id="main" class="site-main">
+
+      <section class="title-block wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+			<div class="container">
+				<h1>Archive</h1>
+			</div>
+		</section>
+
+		<section class="pt-0 main wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s">
+			<div class="container">
+				<div class="card">
+					<div class="card-body p-5">
+						<div class="row">
+
+							<div class="col-lg-8">
+
+<h2 class="mb-4">Archive Subtitle</h2>
+
+	                <?php
+	                    $counter = 0; // Number of posts to pull
+	                    $recentPosts = new WP_Query(array(
+	                        'showposts' => $counter, 
+	                        'offset' => 0,  // Set this to 1 to skip over first post, 2 to skip the first two, etc.
+	                        'order' => 'DESC', // Puts new posts first, to put oldest posts first, change to 'ASC'
+	                        'post__not_in' => get_option("sticky_posts"), // Ignore sticky posts for this particular query
+	                    ));
+	                ?>
+
+	                <?php while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
+	                <div class="collection-block box<?php echo $counter--; ?>" data-wow-duration="1s" data-wow-delay="0.4s">
+	                    <h4><a href="<?php echo get_permalink( get_the_ID() );?>"><?php echo get_the_title(); ?></a><?php if( in_category( 'locked' ) ): ?> &nbsp;<span class="text-danger"><i class="fa fa-lock"></i></span><?php endif; ?></h4>
+	                    <?php the_excerpt(); ?>
+	                </div>
+	                <?php endwhile; wp_reset_postdata(); ?>
+
+
+
+		<?php /*
 		if ( have_posts() ) :
 
 			if ( is_home() && ! is_front_page() ) :
@@ -29,15 +66,10 @@ get_header();
 				<?php
 			endif;
 
-			/* Start the Loop */
+
 			while ( have_posts() ) :
 				the_post();
 
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
 				get_template_part( 'template-parts/content', get_post_type() );
 
 			endwhile;
@@ -49,11 +81,23 @@ get_header();
 			get_template_part( 'template-parts/content', 'none' );
 
 		endif;
-		?>
+		*/ ?>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+							</div>
+							
+							<div class="col-lg-4">
+								<?php get_sidebar(); ?>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</main><!-- #main -->
+</div><!-- #primary -->
+
 
 <?php
-get_sidebar();
 get_footer();

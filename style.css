@@ -854,21 +854,14 @@ object {
 /*header {
   padding: 156px 0 100px;
 }*/
-body {
+.site-wrap {
   min-height: 800px;
   font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
-  background: url(img/pequod-01.jpg) no-repeat center center fixed;
+  background: url(img/pequod-01.jpg);
   background-size: cover !important;
-  -o-background-size: cover !important; }
-
-body.bg2 {
-  background: url(img/pequod-02.jpg) no-repeat center center fixed; }
-
-body.bg3 {
-  background: url(img/pequod-03.jpg) no-repeat center center fixed; }
-
-body.bg4 {
-  background: url(img/pequod-04.jpg) no-repeat center center fixed; }
+  -o-background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important; }
 
 section {
   padding: 60px 0; }

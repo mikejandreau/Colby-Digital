@@ -14,7 +14,7 @@ get_header();
 		<main id="main" class="site-main">
 
 
-		<section class="title-block">
+      <section class="title-block wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
 			<div class="container">
 				<h1><?php echo get_the_title(); ?></h1>
 			</div>
