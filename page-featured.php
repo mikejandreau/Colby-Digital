@@ -18,69 +18,106 @@ get_header();
 <div id="primary" class="content-area">
 	<main id="main" class="site-main">
 
+		<section class="title-block">
+			<div class="container">
+				<h1><?php echo get_the_title(); ?></h1>
+			</div>
+		</section>
 
 
 
-
-
-      <section class="title-block title-block-alt">
-        <div class="container">
-          <h1>College Archives</h1>
-        </div>
-      </section>
-
-      <div class="featured-items">
+    <section class="section featured-items">
         <div class="container">
 
-          <div class="row">
 
-            <div class="col-sm-6 col-md-3 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
-              <div class="card">
-                <img class="card-img-top" src="https://images.unsplash.com/20/cambridge.JPG?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1930&q=80" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Title of Archive</h5>
-                  <p class="card-text">Example text describing this collection.</p>
-                  <a href="#" class="btn btn-primary">Read More</a>
+
+
+            <?php /*
+            */ ?>
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="row">
+                                
+
+                        <?php
+                            $counter = 4; // Number of posts to pull
+                            $recentPosts = new WP_Query(array(
+                                'showposts' => $counter, 
+                                'offset' => 0,  // Set this to 1 to skip over first post, 2 to skip the first two, etc.
+                                'order' => 'DESC', // Puts new posts first, to put oldest posts first, change to 'ASC'
+                                'post__not_in' => get_option("sticky_posts"), // Ignore sticky posts for this particular query
+                                // 'cat' => '-3', // Ignore events, which category ID=3
+                            ));
+                        ?>
+
+                        <?php while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
+                        <div class="col-sm-6 col-md-3 mb-4 wow fadeIn box<?php echo $counter--; ?>" data-wow-duration="1s" data-wow-delay="0.4s">
+                            <div class="card h-100">
+                                <div class="blog-image">
+                                    <?php $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'large' ); ?>
+                                    <a href="<?php echo get_permalink( get_the_ID() );?>" style="background-image: url('<?php echo $thumb['0'];?>')"></a>
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title"><a href="<?php echo get_permalink( get_the_ID() );?>"><?php echo get_the_title(); ?></a></h4>
+                                    <?php /*
+                                    <div class="blog-author-date">
+                                        <p class="author">
+                                            
+                                        <?php 
+                                            // gets post date and bullet separator
+                                            echo '<span class="blog-date">' . get_the_date('M j, Y') . '</span><span class="blog-bullet">&nbsp;&bull;&nbsp;</span>'; 
+
+                                            // gets author name
+                                            $fname = get_the_author_meta('first_name');
+                                            $lname = get_the_author_meta('last_name');
+                                            $full_name = '';
+
+                                            if( empty($fname)){
+                                                $full_name = $lname;
+                                            } elseif( empty( $lname )){
+                                                $full_name = $fname;
+                                            } else {
+                                                // both first name and last name are present
+                                                $full_name = "{$fname} {$lname}";
+                                            }
+                                            echo '<span class="blog-author">By ' . $full_name . '</span>'; 
+                                        ?>
+                                        </p>
+                                    </div>
+                                    */ ?>
+                                    <?php // the_excerpt(); ?>
+                                    <?php /*
+                                    <a class="btn btn-primary" href="<?php echo get_permalink( get_the_ID() );?>">Read More</a>
+                                    */ ?>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endwhile; wp_reset_postdata(); ?>
+
+
+
+            			<?php /*
+                        <div class="col-sm-12 line-link-more">
+                        <?php echo '<hr><a class="button button-primary" href="' . get_permalink( get_option( 'page_for_posts' ) ) . '">See more posts <i class="fa fa-fw fa-angle-double-right"></i></a>'; ?>
+                        </div>
+            			*/ ?>
+
+
+                    </div>
                 </div>
-              </div>
+
             </div>
 
-            <div class="col-sm-6 col-md-3 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s">
-              <div class="card">
-                <img class="card-img-top" src="https://images.unsplash.com/photo-1498079022511-d15614cb1c02?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Title of Archive</h5>
-                  <p class="card-text">Example text describing this collection.</p>
-                  <a href="#" class="btn btn-primary">Read More</a>
-                </div>
-              </div>
-            </div>
 
-            <div class="col-sm-6 col-md-3 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.6s">
-              <div class="card">
-                <img class="card-img-top" src="https://images.unsplash.com/photo-1494809610410-160faaed4de0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Title of Archive</h5>
-                  <p class="card-text">Example text describing this collection.</p>
-                  <a href="#" class="btn btn-primary">Read More</a>
-                </div>
-              </div>
-            </div>
 
-            <div class="col-sm-6 col-md-3 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.8s">
-              <div class="card">
-                <img class="card-img-top" src="https://images.unsplash.com/photo-1453733190371-0a9bedd82893?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Title of Archive</h5>
-                  <p class="card-text">Example text describing this collection.</p>
-                  <a href="#" class="btn btn-primary">Read More</a>
-                </div>
-              </div>
-            </div>
 
-          </div>
         </div>
-      </div>
+    </section>
+
+
+
+
 
       <div class="main wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s">
         <div class="container">
@@ -88,73 +125,53 @@ get_header();
             <div class="card-body p-5">
 
 
+
+
+
+
+
+
+
+
+
+
               <div class="row">
                 <div class="col-lg-8">
-                  <h2 class="mb-4">Collections</h2>
 
-                  <div class="collection-block">
-                    <h4><a href="#">Title of Collection</a></h4>
-                    <p>Brief description of collection</p>
-                  </div>
 
-                  <div class="collection-block">
-                    <h4><a href="#">Title of Collection</a></h4>
-                    <p>Brief description of collection</p>
-                  </div>
+            	<h2 class="mb-4">Collections</h2>
 
-                  <div class="collection-block">
-                    <h4><a href="#">Title of Collection</a></h4>
-                    <p>Brief description of collection</p>
-                  </div>
+				<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
+					the_content();
+				endwhile; else: ?>
+					<p>Sorry, no posts matched your criteria.</p>
+				<?php endif; ?>
 
-                  <div class="collection-block">
-                    <h4><a href="#">Title of Collection</a></h4>
-                    <p>Brief description of collection</p>
-                  </div>
 
-                  <div class="collection-block">
-                    <h4><a href="#">Title of Collection</a> <span class="text-danger"><i class="fa fa-lock"></i></span></h4>
-                    <p>Brief description of collection</p>
-                  </div>
 
-                  <div class="collection-block">
-                    <h4><a href="#">Title of Collection</a></h4>
-                    <p>Brief description of collection</p>
-                  </div>
 
-                  <div class="collection-block">
-                    <h4><a href="#">Title of Collection</a></h4>
-                    <p>Brief description of collection</p>
-                  </div>
+
+	                <?php
+	                    $counter = 6; // Number of posts to pull
+	                    $recentPosts = new WP_Query(array(
+	                        'showposts' => $counter, 
+	                        'offset' => 0,  // Set this to 1 to skip over first post, 2 to skip the first two, etc.
+	                        'order' => 'DESC', // Puts new posts first, to put oldest posts first, change to 'ASC'
+	                        'post__not_in' => get_option("sticky_posts"), // Ignore sticky posts for this particular query
+	                    ));
+	                ?>
+
+	                <?php while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
+	                <div class="collection-block box<?php echo $counter--; ?>" data-wow-duration="1s" data-wow-delay="0.4s">
+	                    <h4><a href="<?php echo get_permalink( get_the_ID() );?>"><?php echo get_the_title(); ?></a><?php if( in_category( 'locked' ) ): ?> &nbsp;<span class="text-danger"><i class="fa fa-lock"></i></span><?php endif; ?></h4>
+	                    <?php the_excerpt(); ?>
+	                </div>
+	                <?php endwhile; wp_reset_postdata(); ?>
 
                 </div>
-                <div class="col-lg-4">
-
-                  <div class="search-block-alt mb-4">
-
-                    <div class="input-group mb-3">
-                      <input type="text" class="form-control" placeholder="Search our collections" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                      <div class="input-group-append">
-                        <button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
-                      </div>
-                    </div>
-                    <a href="#" class="btn btn-primary btn-block">Browse All</a>
-                  </div>
-
-                  <h3>Recent Additions</h3>
-                  <ul>
-                    <li><a href="#">New Item</a></li>
-                    <li><a href="#">New Item</a></li>
-                    <li><a href="#">New Item</a></li>
-                    <li><a href="#">New Item</a></li>
-                    <li><a href="#">New Item</a></li>
-                    <li><a href="#">New Item</a></li>
-                  </ul>
-
-                  <h4>Contact Info</h4>
-                  <p>Copyright information for collections, refers broadly to items as a whole.</p>
-
-                </div>
+				<div class="col-lg-4">
+					<?php get_sidebar(); ?>
+				</div>
               </div>
 
             </div>
@@ -165,37 +182,6 @@ get_header();
 
 
 
-
-
-		<section class="title-block">
-			<div class="container">
-				<h1><?php echo get_the_title(); ?> test</h1>
-			</div>
-		</section>
-
-		<section class="pt-0 main wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s">
-			<div class="container">
-				<div class="card">
-					<div class="card-body p-5">
-						<div class="row">
-
-							<div class="col-lg-8">
-								<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
-									the_content();
-								endwhile; else: ?>
-									<p>Sorry, no posts matched your criteria.</p>
-								<?php endif; ?>
-							</div>
-
-							<div class="col-lg-4">
-								<?php get_sidebar(); ?>
-							</div>
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
 
 	</main><!-- #main -->
 </div><!-- #primary -->
