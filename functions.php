@@ -209,22 +209,22 @@ require get_template_directory() . '/inc/wp_bootstrap_navwalker.php';
 /**
  * ADD FEATURED IMAGE TO HERO
  * Enable featured image to be background of hero block (default hero image in hero.scss)
- * If featured image has been set, this function gets ID/URL of image and overrides default CSS 
+ * If featured image has been set, this function gets ID/URL of image and overrides default CSS  
  */
-function digitalcolby_custom_background_image(){
-	if (has_post_thumbnail()) { // if a thumbnail has been set
-		$imgID = get_post_thumbnail_id($post->ID); // get id of featured image
-		$featuredImage = wp_get_attachment_image_src($imgID, 'full' ); // get url of featured image (returns array)
-		$imgURL = $featuredImage[0]; // get url of image from array
-		?>
-		<style type="text/css">
-			.site-wrap {
-				background: url(<?php echo $imgURL ?>);
-			}
-		</style>
-		<?php
+function digitalcolby_custom_background_img(){
+	$custom_background_img = NULL;
+	if (has_post_thumbnail()) {
+		$imgID = get_post_thumbnail_id($post->ID);
+		$featuredImage = wp_get_attachment_image_src($imgID, 'full' );
+		$imgURL = $featuredImage[0];
+		$custom_background_img = '<style type="text/css">.site-wrap {background: url(' . $imgURL . ');}</style>';
 	}
+	echo $custom_background_img;
 }
-add_action( 'wp_head', 'digitalcolby_custom_background_image' );
+add_action( 'wp_head', 'digitalcolby_custom_background_img' );
+
+
+
+
 
 
