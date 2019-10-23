@@ -168,6 +168,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
   -o-background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
 }
 
 // body.bg2 {
@@ -182,9 +183,9 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 //   background: url(img/pequod-04.jpg) no-repeat center center fixed;
 // }
 
-section {
-  padding: 60px 0;
-}
+// section {
+//   padding: 30px 0;
+// }
 
 p a {
 	text-decoration: underline;
@@ -222,11 +223,19 @@ p a {
 }
 
 
+.search-form,
+.browse-all-btn {
+  margin: 5px 0;
+
+  // @include laptop {
+  //   margin: 0;
+  // }
+}
 
 
 .title-block {
   color: #fff;
-  padding: 60px 0;
+  padding: 30px 0;
 }
 
 .title-block.title-block-alt {
@@ -251,6 +260,11 @@ p a {
 .triple-feature {
   text-align: center;
   padding: 0;
+  margin-bottom: 60px;
+}
+
+.intro-copy {
+  margin-bottom: 60px;
 }
 
 .triple-feature-block {

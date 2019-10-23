@@ -187,7 +187,7 @@ get_header();
 
 
                         <div class="col-sm-12 line-link-more">
-                        <?php echo '<hr><a class="button button-primary" href="' . get_permalink( get_option( 'page_for_posts' ) ) . '">See more posts <i class="fa fa-fw fa-angle-double-right"></i></a>'; ?>
+                        <?php echo '<hr><a class="btn bg-white" href="' . get_permalink( get_option( 'page_for_posts' ) ) . '">Browse All <i class="fa fa-fw fa-angle-double-right"></i></a>'; ?>
                         </div>
 
 

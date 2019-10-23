@@ -731,7 +731,9 @@ a {
 .updated:not(.published) {
   display: none; }
 
-.page-content,
+.page-content {
+  margin: 0; }
+
 .entry-content,
 .entry-summary {
   margin: 1.5em 0 0; }
@@ -861,10 +863,8 @@ object {
   background-size: cover !important;
   -o-background-size: cover !important;
   background-position: center !important;
-  background-repeat: no-repeat !important; }
-
-section {
-  padding: 60px 0; }
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important; }
 
 p a {
   text-decoration: underline; }
@@ -894,9 +894,13 @@ p a {
   background: rgba(0, 0, 0, 0.5);
   color: #fff; }
 
+.search-form,
+.browse-all-btn {
+  margin: 5px 0; }
+
 .title-block {
   color: #fff;
-  padding: 60px 0; }
+  padding: 30px 0; }
 
 .title-block.title-block-alt {
   padding: 30px 0; }
@@ -912,7 +916,11 @@ p a {
 
 .triple-feature {
   text-align: center;
-  padding: 0; }
+  padding: 0;
+  margin-bottom: 60px; }
+
+.intro-copy {
+  margin-bottom: 60px; }
 
 .triple-feature-block {
   padding: 0;

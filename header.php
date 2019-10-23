@@ -74,7 +74,7 @@
 
 
 				<!-- <a href="#" class="btn btn-light order-1 order-md-last">Browse All</a> -->
-				<?php echo '<a class="btn btn-light order-1 order-md-last" href="' . get_permalink( get_option( 'page_for_posts' ) ) . '">Browse All</a>'; ?>
+				<?php echo '<a class="btn btn-light order-1 order-md-last browse-all-btn" href="' . get_permalink( get_option( 'page_for_posts' ) ) . '">Browse All</a>'; ?>
 
 			</div>
 			<!-- </div> -->
