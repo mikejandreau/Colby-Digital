@@ -4,7 +4,7 @@
 	"description": "This is a dummy description",
 	"main": "",
 	"dependencies": {
-		"browser-sync": "^2.26.7",
+		"browser-sync": "^2.27.10",
 		"critical": "^1.3.6",
 		"gulp": "^4.0.2",
 		"gulp-autoprefixer": "^7.0.1",
